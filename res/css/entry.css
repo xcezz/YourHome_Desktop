@@ -1,0 +1,179 @@
+/***
+TABLE OF CONTENTS
+- USED FOR CREATING THE NOTIFICATION BOXES -
+
+*               - Resets and overrides
+BODY            - Font
+LEAN OVERLAY    - Modal window for calendar module
+MESSAGE         - Posts, comments
+FORM            - Box form, corresponding image, username, date, triangle transition
+***/
+
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Calibri, Arial, sans-serif;
+}
+
+#message {
+    height: 62px;
+    max-height: 62px;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    display: none;
+}
+
+.form {
+    width: 440px;
+    margin: 30px auto 30px;
+    padding: 15px;
+    position: relative;
+
+    background: #fffaf6;
+    border-radius: 4px;
+    color: #7e7975;
+    box-shadow:
+        0 2px 2px rgba(0,0,0,0.2),        
+        0 1px 5px rgba(0,0,0,0.2),        
+        0 0 0 12px rgba(255,255,255,0.4);
+}
+
+.form h1 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #b4b4b4;
+    padding-top: 8px;
+    border-top: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.form h1 .post-date,
+.form h1 .username {
+    display: inline-block;
+}
+
+.form h1 .post-date {
+    color: #34a5cf;
+    padding-right: 2px;
+    float: right;
+}
+
+.form h1 .username {
+    color: #6c6763;
+    padding-left: 2px;
+}
+
+.form h2 {
+    font-size: 12px;
+    font-weight: bold;
+    color: #b4b4b4;
+    padding-top: 0px;
+    border-bottom: 1px solid #EBE6E2;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.form h2 .update-status {
+    display: inline-block;
+}
+
+.form h2 .upload-image {
+    float: right;
+}
+
+.form a {
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 0px;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.form label {
+    font-size: 14px;
+    color: #b4b4b4;
+    padding-top: 0px;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    width: 100px;
+    display: block;
+    float: left;
+}
+
+.form .message {
+    font-family: Calibri, Arial, sans-serif;
+    font-size: 12px;
+    resize: none;
+}
+
+.form .submit {
+    margin-left: 370px;
+}
+
+.form .userimage {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-right: 10px;
+}
+
+.form .float {
+    width: 50%;
+    float: left;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,1);
+}
+
+.form .item {
+    display: inline-block;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-shadow: 0 2px 0 rgba(255,255,255,0.8);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+}
+
+/** A rectangle object with two transparent edges -> triangle **/
+/** Rotated, so it fits in the upper left corner **/
+
+.form .dreieck {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid green;
+    transform: rotate(-45deg);
+    transition: border-bottom 1s;
+    transition: all 0.2s ease;
+
+}
+
+/** Transition from the upper left corner to the bottom right **/
+
+.form .dreieck.rot {
+    color: red;
+    transform: translate(360px, 55px) rotate(135deg);
+    border-bottom: 25px solid red;
+
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <title>yourHome - Join</title>
+        <meta name="description" content="yourHome Join form" /> 
+        <link rel="stylesheet" type="text/css" href="/res/css/login.css" />
+		<style>
+			body {
+				background: url(res/assets/texture.png);
+			}
+		</style>
+    </head>
+    <body>
+			
+			<section class="main">
+				<form action="" method="post" class="form" >
+					<h1><span class="sign-up">Einer bestehenden wohnung beitreten</span></h1>
+                    <% if (fail){ %>
+                        <span class="failed">Wohnungsname oder Passwort falsch!</span>
+                    <% } %>
+					<p class="float">
+						<label for="login">Wohnungsname</label>
+						<input id="name" type="text" name="homename" placeholder="Name" required>
+					</p>
+					<p class="float">
+						<label for="password">Passwort</label>
+						<input id="password" type="password" name="password" placeholder="Passwort" class="showpassword" required>
+					</p>
+					<p class="clearfix"> 
+                        <input id="join" class="register" type="submit" name="submit" value="Beitreten!">
+					</p>
+				</form>
+			</section>			
+    </body>
+</html>

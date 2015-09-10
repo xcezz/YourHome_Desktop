@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>yourHome</title>
+    <meta name="description"
+          content="yourHome - a private social network">
+    <link href="res/css/yourhome.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="res/css/entry.css" />
+    <link rel="stylesheet" type="text/css" href="res/css/fullcalendar.css" />
+
+</head>
+
+<body>
+
+<header>
+ <p id="yourHome"></p>
+</header>
+    
+<nav id="steuerungoben">
+    <ul>
+        <li><button class="button-features" id = "infoboard">Whiteboard</button></li>
+        <li><button class="button-features" id = "stock">Vorräte</button></li>
+        <li><button class="button-features" id = "tasks">Aufgaben</button></li>
+        <li><button class="button-features" id = "account">Rechnungen</button></li>
+        <li><button class="button-features" id = "calendar">Kalender</button></li>
+    </ul>
+</nav>
+
+<div id="wrapper">
+    
+<nav id="steuerunglinks">
+    <li>
+        <ul>
+            <li><a>Anzeigen:</a>
+                <ul id="sort-options"/>
+            </li>
+        </ul>
+    </li>
+</nav>
+
+<aside id="steuerungrechts">
+</aside>
+
+<section id="steuerungmitte">
+</section>
+
+<footer>
+    <a href='/logout'>Hier Ausloggen</a>
+    <a href="/account">Account</a>
+</footer>
+</div>
+<div style="display:none;" id="newCalendar"> 
+    <form id="calendarform" class="form">
+        <h2><span class="update-status">Neues Ereignis</span></h2>
+        <br>
+        <input type="message" class="message" placeholder=" Titel" autofocus size="61" required>
+        <br>
+        <input type="message" class="message" placeholder=" Beschreibung" autofocus size="61">
+        <br><br>
+        <label>Ganztägig? </label><input id="allday" type="checkbox" name="allday" value="allday">
+        <br>
+        <label>Privat? </label><input type="checkbox" name="private" value="private">
+        <br>
+        <label>Von: </label><input type="date" name="start" required> <input type="time" name="start2">
+        <br>
+        <label>Bis: </label><input type="date" name="end"> <input type="time" name="end2">
+    	<input id="newCalendarButton" type="button" name="submit" value="Post" class="submit">
+    </form>
+</div>
+    
+<div style="display:none;" id="calendarInfo"> 
+    <form id="calendarInfoForm" class="form">
+        <h2><span class="update-status">Ereignis Information:</span></h2>
+        <br>
+        <table style="width:100%">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+           <td>Titel: </td>
+           <td><label> </label></td>
+        </tr>
+        <tr>
+           <td>Beschreibung: </td>
+           <td><label> </label></td>
+        </tr>
+        <tr>
+           <td>Ganztägig? </td>
+           <td><label> </label></td>
+        </tr>
+        <tr>
+           <td>Privat? </td>
+           <td><label> </label></td>
+        </tr>
+        <tr>
+           <td>Datum: </td>
+           <td><label> </label></td>
+        </tr>
+        </table>
+        <input id="deleteCalendar" type="button" name="submit" value="Weg!" class="submit">
+    </form>
+</div>
+
+    
+    <script src="libs/jquery-2.1.1.js"></script>
+    <script src="libs/underscore.js"></script>
+    
+    <script id="checkboxTemplate" type="text/template">
+            <li option = <<%= option %>>><input type="checkbox" name = "<<%= lable %>>"> <<%= lable %>></li>
+    </script>
+    
+    <script id="infoboardTemplate" type="text/template">
+        <form class="form">
+                <img src="res/assets/<<%= imgSrc %>>.png" alt="Placeholder" class="userimage">
+                <p><span class="userinput"><<%= inputText %>></span></p>
+                <br>
+				<h1><span class="username"><<%= inputUser %>></span> <span class="post-date"><<%= inputDate %>></span></h1>
+        </form>
+    </script>
+    
+    <script id="newStockEntryTemplate" type="text/template">
+        <form id="submitForm" class="form">
+	       <h2><span class="update-status">Neuer Eintrag</span></h2>
+	       <br>
+            <input type="message" class="message" placeholder= <<%= placeholder %>> autofocus size="61" required>
+            <br>
+    	   <input id="submitButton" type="button" name="submit" value="Post" class="submit" onclick = <<%= onclickFunction %>>>
+        </form>
+    </script>
+    
+     <script id="stockTemplate" type="text/template">
+        <form class="form">                    
+            <div class="dreieck"></div>
+            <div class="item"><<%= inputText %>></div>
+         </form>    
+    </script>
+    
+    <script id="newInfoboardEntryTemplate" type="text/template">
+        <form id="submitForm" class="form">
+            <h2><span class="update-status">Status</span></h2>
+            <br>
+            <textarea cols="78" rows="10" id="message" class="message" placeholder=" Was machst du gerade?" required></textarea>
+            <input id="submitButton" type="button" name="submit" value="Post" class="submit" onclick = <<%= onclickFunction %>>>
+        </form>
+    </script>
+    
+    <script id="newAccountEntryTemplate" type="text/template">
+        <form id="submitForm" class="form">
+            <h2><span class="update-status">Neue Rechnung</span></h2>
+            <br>
+            <input id="von" type="message" class="message" placeholder=" Von" autofocus size="61">
+            <br>
+            <input id="rechnung" type="message" class="message" placeholder=" Rechnung" autofocus size="61" required>
+            <br>
+            <input id="betrag" type="message" class="message" placeholder=" Betrag" size="61" pattern="^\d{1,4}([\.,]\d{2})?$" title="z.B. 50,00" required>
+            <br>
+            <input id="an" type="message" class="message" placeholder=" An" autofocus size="61">
+            <br>
+            <input id="submitButton" type="button" name="submit" value="Post" class="submit" onclick = <<%= onclickFunction %>>>
+        </form>
+    </script>
+    
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="libs/jquery.leanModal.min.js"></script>
+    <script src="libs/moment.min.js"></script>
+    <script src="libs/fullcalendar.js"></script>
+    <script src="src/yourhome/Yourhome.js"></script>
+    <script src="src/yourhome/Helper.js"></script>
+    <script src="src/yourhome/Controller.js"></script>
+    <script src="src/yourhome/Model.js"></script>
+    <script src="src/yourhome/View.js"></script>
+    <script>
+        Yourhome.init(<%= user %>, "<%= username %>");
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <title>yourHome - Login</title>
+        <meta name="description" content="yourHome Login form" /> 
+        <link rel="stylesheet" type="text/css" href="res/css/login.css" />
+		<style>
+			body {
+				background: url(res/assets/texture.png);
+			}
+		</style>
+    </head>
+    <body>
+			
+			<section class="main">
+				<form action="" method="post" class="form" >
+					<h1><span class="sign-up">Registrieren</span> oder <span class="log-in">Einloggen</span></h1>
+                    <% if (fail){ %>
+                        <span class="failed">Benutzername oder Passwort falsch!</span>
+                    <% } %>
+					<p class="float">
+						<label for="login">Benutzername</label>
+						<input id="name" type="text" name="username" placeholder="Benutzername" required>
+					</p>
+					<p class="float">
+						<label for="password">Passwort</label>
+						<input id="password" type="password" name="password" placeholder="Passwort" class="showpassword" required>
+					</p>
+					<p class="clearfix"> 
+						<a href="/register" class="register">Registrieren</a>    
+						<input id="login" type="submit" name="submit" value="Einloggen">
+					</p>
+				</form>
+			</section>	
+        
+        
+    </body>
+</html>

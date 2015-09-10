@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <title>yourHome - Account</title>
+        <meta name="description" content="yourHome Account form" /> 
+        <link rel="stylesheet" type="text/css" href="/res/css/login.css" />
+		<style>
+			body {
+				background: url(res/assets/texture.png);
+			}
+		</style>
+        
+    </head>
+    <body>
+			
+			<section class="main">
+				<form action="" method="post" class="form">
+					<h1><span class="sign-up">Account</span></h1>
+					<p class="std">
+						<span>Benutzername: <%= username %></span>
+                    </p>
+                    <p>
+						<span>Wohnungsname: <%= homename %></span>
+                    </p>
+					<p class="float">
+						<label for="password">Neues Passwort</label>
+						<input id="password1" type="password" name="password" placeholder="Passwort" class="showpassword" required>
+                    </p>
+                    <p class="float">
+                        <label for="password">&nbsp;</label>
+						<input id="password2" type="password" name="passwordcheck" placeholder="Passwort bestätigen" class="showpassword" required>
+					</p>
+                    <br><br><br><br><br>
+					<p class="clearfix"> 
+						<a href="/yourhome" class="register">Zurück</a>    
+						<input type="submit" name="submit" value="Passwort ändern">
+					</p>
+				</form>
+			</section>		
+        <script>
+             var password1 = document.getElementById('password1');
+var password2 = document.getElementById('password2');
+
+var checkPasswordValidity = function() {
+    if (password1.value != password2.value) {
+        password2.setCustomValidity('Passwörter müssen übereinstimmen.');
+    } else {
+        password2.setCustomValidity('');
+    }        
+};
+
+password1.addEventListener('change', checkPasswordValidity, false);
+password2.addEventListener('change', checkPasswordValidity, false);
+        </script>
+    </body>
+</html>
+</body>
+</html>
